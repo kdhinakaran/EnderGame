@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MySelectable.cs">
+    <Files>
+      <File FileName="Assets\RUIS\Scripts\Input\RUISWandSelector.cs" Line="35" Column="44" />
+      <File FileName="Assets\MySelectable.cs" Line="26" Column="3" />
+      <File FileName="Assets\RUIS\Scripts\Input\RUISPSMoveWand.cs" Line="25" Column="16" />
+      <File FileName="Assets\RUIS\Editor\RUISWandSelectorEditor.cs" Line="72" Column="22" />
+      <File FileName="Assets\RUIS\Scripts\Input\RUISSelectable.cs" Line="202" Column="33" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
