@@ -19,7 +19,8 @@ public class RUISWandSelectorEditor : Editor
     SerializedProperty selectionRayLength;
     SerializedProperty selectionRayStartDistance;
 
-    SerializedProperty headTransform;
+	SerializedProperty headTransform;
+	SerializedProperty psmove2;
 
     SerializedProperty toggleSelection;
     SerializedProperty grabWhileButtonDown;
@@ -36,7 +37,8 @@ public class RUISWandSelectorEditor : Editor
         selectionRayLength = serializedObject.FindProperty("selectionRayLength");
         selectionRayStartDistance = serializedObject.FindProperty("selectionRayStartDistance");
 
-        headTransform = serializedObject.FindProperty("headTransform");
+		headTransform = serializedObject.FindProperty("headTransform");
+		psmove2 = serializedObject.FindProperty("psmove2");
         
         toggleSelection = serializedObject.FindProperty("toggleSelection");
         grabWhileButtonDown = serializedObject.FindProperty("grabWhileButtonDown");
@@ -66,10 +68,11 @@ public class RUISWandSelectorEditor : Editor
         if (!headToWandMode)
         {
             headTransform.objectReferenceValue = null;
-        }
+		}
+		GUI.enabled = true;
+		EditorGUILayout.PropertyField(psmove2, new GUIContent("PS Move 2 Controller", "The head transform to use for HeadToWand selection"));
 
 
-        GUI.enabled = true;
 
         EditorGUILayout.Space();
         EditorGUILayout.PropertyField(toggleSelection, new GUIContent("Toggle Selection", "Toggle selection status when pressing button. Otherwise selection will last as long as the user holds the selection button down."));
