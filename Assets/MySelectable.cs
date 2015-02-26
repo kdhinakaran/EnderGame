@@ -24,11 +24,11 @@ public class MySelectable : RUISSelectable {
 			return;
 		}
 
-		//if (movewand && movewand.SelectionButtonIsDown()){
-		if (Input.GetKey(KeyCode.A)){
+		if (movewand && movewand.SelectionButtonIsDown()){
+		//if (Input.GetKey(KeyCode.A)){
 			if (!started)  {
 				Vector3 a1 = selector.transform.position;
-				Vector3 b1 = mo;//selector.psmove2.transform.position;
+				Vector3 b1 = selector.psmove2.transform.position;
 				initialscale = Mathf.Abs ((a1 - b1).magnitude);
 				originalscale = this.transform.localScale;
 				Debug.Log (a1);
@@ -37,7 +37,7 @@ public class MySelectable : RUISSelectable {
 			}	
 
 			Vector3 a = selector.transform.position;
-			Vector3 b = mo;//selector.psmove2.transform.position;
+			Vector3 b = selector.psmove2.transform.position;
 			float newlength = Mathf.Abs ((a - b).magnitude);
 			Debug.Log (a);
 			Debug.Log (newlength);
