@@ -18,6 +18,8 @@ public class RUISWandSelector : MonoBehaviour {
         WandDirection
     };
 
+	public RUISWandSelector psmove2;
+
     public SelectionRayType selectionRayType = SelectionRayType.WandDirection;
     private LineRenderer lineRenderer;
     public float selectionRayLength = 200;
