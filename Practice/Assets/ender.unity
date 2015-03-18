@@ -5492,7 +5492,7 @@ MonoBehaviour:
   ignoredLayers:
     serializedVersion: 2
     m_Bits: 0
-  positionSelectionGrabType: 0
+  positionSelectionGrabType: 2
   rotationSelectionGrabType: 0
   selectedGameObjectsLayer: 11
 --- !u!114 &1050587891
@@ -7987,7 +7987,7 @@ MonoBehaviour:
   ignoredLayers:
     serializedVersion: 2
     m_Bits: 0
-  positionSelectionGrabType: 0
+  positionSelectionGrabType: 2
   rotationSelectionGrabType: 0
   selectedGameObjectsLayer: 11
 --- !u!114 &1682259366
@@ -8646,6 +8646,10 @@ Prefab:
     - target: {fileID: 100000, guid: 364f944ed733aed4e85da36d8c07dab2, type: 2}
       propertyPath: m_Name
       value: PSMoveWand2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 364f944ed733aed4e85da36d8c07dab2, type: 2}
+      propertyPath: positionSelectionGrabType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 364f944ed733aed4e85da36d8c07dab2, type: 2}
@@ -9630,6 +9634,10 @@ Prefab:
       propertyPath: psmove2
       value: 
       objectReference: {fileID: 1682259365}
+    - target: {fileID: 11400002, guid: 364f944ed733aed4e85da36d8c07dab2, type: 2}
+      propertyPath: positionSelectionGrabType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 364f944ed733aed4e85da36d8c07dab2, type: 2}
   m_RootGameObject: {fileID: 1050587887}
