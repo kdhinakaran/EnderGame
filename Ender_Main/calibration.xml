@@ -2,14 +2,14 @@
 <ns2:RUISPairwiseCalibration xmlns:ns2="http://ruisystem.net/RUISPairwiseCalibration">
   <Transforms>
     <PS_Move-Kinect_1>
-      <translate x="0" y="0" z="0" />
-      <rotate r00="1" r01="0" r02="0" r10="0" r11="1" r12="0" r20="0" r21="0" r22="1" />
+      <translate x="-0.2002368" y="-0.02432631" z="0.006206554" />
+      <rotate r00="0.9622696" r01="-0.135932" r02="-0.04412881" r10="0.02215741" r11="0.9213942" r12="0.02525425" r20="0.1435639" r21="0.03491718" r22="0.8604997" />
     </PS_Move-Kinect_1>
   </Transforms>
   <FloorData>
     <Kinect_1>
-      <floorNormal x="0" y="1" z="0" />
-      <distanceFromFloor value="0" />
+      <floorNormal x="-0.003947085" y="0.9999909" z="0.00166034" />
+      <distanceFromFloor value="0.926601" />
     </Kinect_1>
   </FloorData>
 </ns2:RUISPairwiseCalibration>
