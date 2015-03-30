@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\WandCollider.cs">
+    <Files>
+      <File FileName="Assets\WandCollider.cs" Line="45" Column="21" />
+      <File FileName="Assets\Selector.cs" Line="21" Column="22" />
+      <File FileName="Assets\RUIS\Scripts\Input\RUISWandSelector.cs" Line="213" Column="32" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

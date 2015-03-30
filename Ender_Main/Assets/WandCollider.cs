@@ -3,12 +3,32 @@ using System.Collections;
 
 public class WandCollider : MonoBehaviour {
 
-	GameObject selection = null;
+	public GameObject ghost;
 
-	Selector selector;
+	private GameObject selection = null;
+
+	private Selector selector;
+	private RUISWand wand;
+
+	private GameObject currentGhost;
 
 	void Start(){
 		selector = (Selector)GameObject.Find("Selector_Sphere").GetComponent("Selector");
+		wand = GetComponentInParent<RUISWand>();
+	}
+
+	void Update() {
+		if (wand.SelectionButtonWasPressed () && selection != null && currentGhost == null) {
+			currentGhost = (GameObject)Instantiate (ghost, selection.transform.position, selection.transform.localRotation);
+			currentGhost.transform.parent = this.transform;
+		} else if (wand.SelectionButtonWasReleased () && currentGhost != null) {
+			
+			MoveShip ship = (MoveShip)selection.GetComponent("MoveShip");
+			ship.SetGhost(currentGhost);
+
+			currentGhost.transform.parent = null;
+			currentGhost = null;
+		}
 	}
 
 	void OnTriggerEnter(Collider other) {
@@ -26,6 +46,9 @@ public class WandCollider : MonoBehaviour {
 	}
 
 	void SetSelection(GameObject select){
+		if (currentGhost != null) {
+			return;
+		}
 		this.selection = select;
 		selector.selection = select;
 	}
