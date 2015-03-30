@@ -2,7 +2,7 @@
 
 Content    :   Implements selection behavior for RUISWands
 Authors    :   Mikael Matveinen, Tuukka Takala
-Copyright  :   Copyright 2013 Tuukka Takala, Mikael Matveinen. All Rights reserved.
+Copyright  :   Copyright 2015 Tuukka Takala, Mikael Matveinen. All Rights reserved.
 Licensing  :   RUIS is distributed under the LGPL Version 3 license.
 
 ******************************************************************************/
@@ -23,8 +23,9 @@ public class RUISWandSelector : MonoBehaviour {
     public float selectionRayLength = 200;
     public float selectionRayStartDistance = 0.2f;
     private Vector3 selectionRayStart;
-    private Vector3 selectionRayEnd;
+	public Vector3 selectionRayEnd { get; private set; }
 	private Vector3 headToWandDirection;
+	private float rayLengthAtSelection = 0;
     public Ray selectionRay { get; private set; }
 
     public Transform headTransform;
@@ -216,6 +217,8 @@ public class RUISWandSelector : MonoBehaviour {
         SetLayersRecursively(selection.gameObject, selectedGameObjectsLayer);
 
         selection.OnSelection(this);
+
+		rayLengthAtSelection = Vector3.Magnitude(selectionRayEnd - selectionRay.origin);
     }
 
     private void EndSelection()
@@ -259,9 +262,22 @@ public class RUISWandSelector : MonoBehaviour {
 
 //        lineRenderer.enabled = selection == null && selectionRayType == SelectionRayType.WandDirection;
 
+		// TODO: even with PS Move there is no need to do this every frame
         lineRenderer.SetColors(wand.color, wand.color);
 
         lineRenderer.SetPosition(0, selectionRay.origin);// + selectionRayStartDistance * selectionRay.direction);
-        lineRenderer.SetPosition(1, selectionRayEnd);
+
+		// When selected, visible ray should stop at the selected object (which now belongs to selectedGameObjectsLayer)
+		if(selection)
+		{
+			// Currently linerendered ray gets zero length upon selection if Position Grab is not AlongSelectionRay or
+			// if selected object is one of the RUISSelectableJoints 
+			if(   positionSelectionGrabType != SelectionGrabType.AlongSelectionRay)
+				lineRenderer.SetPosition(1, selectionRay.origin);
+			else
+				lineRenderer.SetPosition(1, selectionRay.origin + selectionRay.direction.normalized * rayLengthAtSelection);
+		}
+		else
+	        lineRenderer.SetPosition(1, selectionRayEnd);
     }
 }

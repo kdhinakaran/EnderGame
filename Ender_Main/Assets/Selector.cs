@@ -7,17 +7,17 @@ public class Selector : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		renderer.enabled = false;
+		GetComponent<Renderer>().enabled = false;
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		transform.Rotate(Vector3.up * Time.deltaTime * 10, Space.World);
-		renderer.enabled = false;
+		GetComponent<Renderer>().enabled = false;
 
 		if(selection != null){
-			renderer.enabled = true;
+			GetComponent<Renderer>().enabled = true;
 			transform.position = selection.transform.position;
 		}
 	}

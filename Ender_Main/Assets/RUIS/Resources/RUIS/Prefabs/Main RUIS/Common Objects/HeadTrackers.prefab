@@ -1938,12 +1938,12 @@ MonoBehaviour:
   rotationOffsetPSMove: {x: 0, y: 0, z: 0}
   rotationOffsetHydra: {x: 0, y: 0, z: 0}
   filterPosition: 1
-  filterPositionKinect: 1
+  filterPositionKinect: 0
   filterPositionPSMove: 0
   filterPositionHydra: 0
   filterPositionTransform: 0
   positionNoiseCovariance: 500
-  positionNoiseCovarianceKinect: 200
+  positionNoiseCovarianceKinect: 300
   positionNoiseCovariancePSMove: 1
   positionNoiseCovarianceHydra: 1
   positionNoiseCovarianceTransform: 500
@@ -2215,7 +2215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultPosition: {x: 0, y: .75, z: 0}
   headPositionInput: 4
-  headRotationInput: 4
+  headRotationInput: 0
   mobileRazerBase: 0
   pickRotationSource: 0
   oculusID: 0
@@ -2580,7 +2580,7 @@ MonoBehaviour:
   rotationOffsetPSMove: {x: 0, y: 0, z: 0}
   rotationOffsetHydra: {x: 0, y: 0, z: 0}
   filterPosition: 1
-  filterPositionKinect: 1
+  filterPositionKinect: 0
   filterPositionPSMove: 0
   filterPositionHydra: 0
   filterPositionTransform: 0
@@ -2733,7 +2733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultPosition: {x: 0, y: .75, z: 0}
   headPositionInput: 4
-  headRotationInput: 4
+  headRotationInput: 0
   mobileRazerBase: 0
   pickRotationSource: 0
   oculusID: 0

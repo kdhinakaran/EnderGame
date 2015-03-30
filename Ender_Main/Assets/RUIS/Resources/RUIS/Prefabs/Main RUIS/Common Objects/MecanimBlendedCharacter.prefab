@@ -4373,12 +4373,12 @@ MonoBehaviour:
   rotationOffsetPSMove: {x: 0, y: 0, z: 0}
   rotationOffsetHydra: {x: 0, y: 0, z: 0}
   filterPosition: 1
-  filterPositionKinect: 1
+  filterPositionKinect: 0
   filterPositionPSMove: 0
   filterPositionHydra: 0
   filterPositionTransform: 0
   positionNoiseCovariance: 500
-  positionNoiseCovarianceKinect: 200
+  positionNoiseCovarianceKinect: 300
   positionNoiseCovariancePSMove: 1
   positionNoiseCovarianceHydra: 1
   positionNoiseCovarianceTransform: 500
@@ -4499,7 +4499,7 @@ MonoBehaviour:
   rotationOffsetPSMove: {x: 0, y: 0, z: 0}
   rotationOffsetHydra: {x: 0, y: 0, z: 0}
   filterPosition: 1
-  filterPositionKinect: 1
+  filterPositionKinect: 0
   filterPositionPSMove: 0
   filterPositionHydra: 0
   filterPositionTransform: 0
@@ -5308,6 +5308,8 @@ MonoBehaviour:
   selectionButton: 0
   controllerId: 0
   whereToCopyColor: {fileID: 0}
+  motionSmoothing: 0
+  refreshRate: 50
 --- !u!114 &11400128
 MonoBehaviour:
   m_ObjectHideFlags: 1

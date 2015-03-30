@@ -73,8 +73,8 @@ public class RUISDisplayManager : MonoBehaviour {
 		{
 			if(GetComponent<OVRManager>())
 				GetComponent<OVRManager>().enabled = false;
-			if(camera)
-				camera.enabled = false;
+			if(GetComponent<Camera>())
+				GetComponent<Camera>().enabled = false;
 		}
 		else 
 		{
@@ -387,8 +387,7 @@ public class RUISDisplayManager : MonoBehaviour {
 		
 		ruisMenu.transform.localRotation = Quaternion.identity;
 		ruisMenu.transform.localPosition = new Vector3(guiX,guiY,guiZ);
-		
-		
+
 		if(ruisMenu.GetComponent<RUISMenuNGUI>())
 			ruisMenu.GetComponent<RUISMenuNGUI>().Hide3DGUI();
 	}

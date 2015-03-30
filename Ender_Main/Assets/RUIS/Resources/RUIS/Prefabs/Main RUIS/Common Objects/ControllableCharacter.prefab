@@ -3641,7 +3641,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 513
-  groundedErrorTweaker: .0500000007
+  groundedErrorTweaker: .100000001
   dynamicFriction: 1
   dynamicMaterial: {fileID: 0}
   feetAlsoAffectGrounding: 1
@@ -3976,12 +3976,12 @@ MonoBehaviour:
   rotationOffsetPSMove: {x: 0, y: 0, z: 0}
   rotationOffsetHydra: {x: 0, y: 0, z: 0}
   filterPosition: 1
-  filterPositionKinect: 1
+  filterPositionKinect: 0
   filterPositionPSMove: 0
   filterPositionHydra: 0
   filterPositionTransform: 0
   positionNoiseCovariance: 500
-  positionNoiseCovarianceKinect: 200
+  positionNoiseCovarianceKinect: 300
   positionNoiseCovariancePSMove: 1
   positionNoiseCovarianceHydra: 1
   positionNoiseCovarianceTransform: 500
@@ -4618,7 +4618,7 @@ MonoBehaviour:
   rotationOffsetPSMove: {x: 0, y: 0, z: 0}
   rotationOffsetHydra: {x: 0, y: 0, z: 0}
   filterPosition: 1
-  filterPositionKinect: 1
+  filterPositionKinect: 0
   filterPositionPSMove: 0
   filterPositionHydra: 0
   filterPositionTransform: 0
