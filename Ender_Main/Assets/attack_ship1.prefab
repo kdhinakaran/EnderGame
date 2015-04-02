@@ -16,9 +16,10 @@ GameObject:
   - 54: {fileID: 5400000}
   - 114: {fileID: 11444912}
   - 114: {fileID: 11409096}
+  - 120: {fileID: 12071964}
   m_Layer: 0
   m_Name: attack_ship1
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b690bb76d08b44bbfbd916877826d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firezone: {fileID: 0}
+  firezone: {fileID: 190368, guid: 9d5c718c1df3dc043b2e1dcd60fe7c85, type: 2}
+  c1: {r: 1, g: .517241359, b: 0, a: 1}
+  c2: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &11444912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,6 +156,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014123f2968998d408e4e18465ef4e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  c1: {r: 1, g: .921568632, b: .0156862754, a: 1}
+  c2: {r: 1, g: 0, b: 0, a: 1}
+--- !u!120 &12071964
+LineRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: 1
+    endWidth: 1
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4294967295
+  m_UseWorldSpace: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
