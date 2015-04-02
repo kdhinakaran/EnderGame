@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\WandCollider.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\FireZone.cs">
     <Files>
-      <File FileName="Assets\WandCollider.cs" Line="45" Column="21" />
-      <File FileName="Assets\Selector.cs" Line="21" Column="22" />
-      <File FileName="Assets\RUIS\Scripts\Input\RUISWandSelector.cs" Line="213" Column="32" />
+      <File FileName="Assets\MoveShip.cs" Line="22" Column="31" />
+      <File FileName="Assets\FireZone.cs" Line="9" Column="56" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

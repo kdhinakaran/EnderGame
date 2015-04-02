@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 55b690bb76d08b44bbfbd916877826d5
+timeCreated: 1427971511
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - firezone: {fileID: 100000, guid: 1a9bb164d66d01f49a6bb569ea888a2c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

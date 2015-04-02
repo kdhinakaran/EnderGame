@@ -15,6 +15,7 @@ GameObject:
   - 65: {fileID: 6500000}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11444912}
+  - 114: {fileID: 11409096}
   m_Layer: 0
   m_Name: attack_ship1
   m_TagString: Untagged
@@ -129,6 +130,18 @@ MonoBehaviour:
   selectionMaterial: {fileID: 2100000, guid: cadf278505852664f966af5b2b8a9680, type: 2}
   maintainMomentumAfterRelease: 1
   continuousCollisionDetectionWhenSelected: 1
+--- !u!114 &11409096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55b690bb76d08b44bbfbd916877826d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firezone: {fileID: 0}
 --- !u!114 &11444912
 MonoBehaviour:
   m_ObjectHideFlags: 1
