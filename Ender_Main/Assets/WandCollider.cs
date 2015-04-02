@@ -18,9 +18,15 @@ public class WandCollider : MonoBehaviour {
 	}
 
 	void Update() {
-		if (wand.SelectionButtonWasPressed () && selection != null && currentGhost == null) {
-			currentGhost = (GameObject)Instantiate (ghost, selection.transform.position, selection.transform.localRotation);
-			currentGhost.transform.parent = this.transform;
+		if (wand.SelectionButtonIsDown () && selection != null && selection.tag.Equals ("Firezone")) {
+			selection.transform.position = transform.position;
+		}
+		if (wand.SelectionButtonWasPressed () && selection != null) {
+
+			if(currentGhost == null && selection.tag.Equals("Ship")){
+				currentGhost = (GameObject)Instantiate (ghost, selection.transform.position, selection.transform.localRotation);
+				currentGhost.transform.parent = this.transform;
+			} 
 		} else if (wand.SelectionButtonWasReleased () && currentGhost != null) {
 			
 			MoveShip ship = (MoveShip)selection.GetComponent("MoveShip");
@@ -30,9 +36,19 @@ public class WandCollider : MonoBehaviour {
 			currentGhost = null;
 		}
 	}
+	
+	
+	void SetSelection(GameObject select){
+		if (currentGhost != null) {
+			return;
+		}
+		this.selection = select;
+		selector.selection = select;
+	}
 
 	void OnTriggerEnter(Collider other) {
-		Debug.Log ("Trigger----------------------------------");
+		if (wand.SelectionButtonIsDown ())
+			return;
 		if (selection != null) {
 			float  ms = Vector3.Distance(gameObject.transform.position, selection.transform.position);
 			float  mo = Vector3.Distance(gameObject.transform.position, other.gameObject.transform.position);
@@ -45,17 +61,9 @@ public class WandCollider : MonoBehaviour {
 	
 	}
 
-	void SetSelection(GameObject select){
-		if (currentGhost != null) {
-			return;
-		}
-		this.selection = select;
-		selector.selection = select;
-	}
-
-
 	void OnTriggerStay(Collider other) {
-		Debug.Log ("Trigger Stay----------------------------------");
+		if (wand.SelectionButtonIsDown ())
+			return;
 		if(selection == null)
 			SetSelection(other.gameObject);
 		else if (other.gameObject != selection) {
@@ -67,7 +75,8 @@ public class WandCollider : MonoBehaviour {
 		
 	}
 	void OnTriggerExit(Collider other) {
-		Debug.Log ("Trigger Stay----------------------------------");
+		if (wand.SelectionButtonIsDown ())
+			return;
 		if (other.gameObject == selection)
 			SetSelection(null);
 		
