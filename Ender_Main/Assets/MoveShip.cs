@@ -9,6 +9,11 @@ public class MoveShip : MonoBehaviour {
 	private float speed = 1;
 	private bool move = false;
 
+	private LineRenderer lineRenderer;
+
+	public Color c1 = Color.yellow;
+	public Color c2 = Color.red;
+
 	private State state = State.IDLE;
 
 	enum State {
@@ -20,6 +25,11 @@ public class MoveShip : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		moveTo = transform.position;
+		lineRenderer = GetComponent<LineRenderer>();
+		lineRenderer.SetWidth(0.01F, 0.01F);
+		lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
+		lineRenderer.SetColors(c1, c2);
+
 	}
 	
 	// Update is called once per frame
@@ -47,6 +57,8 @@ public class MoveShip : MonoBehaviour {
 			time += Time.fixedDeltaTime;
 			if (time >= period) {
 				state = State.END_ROTATE;
+				lineRenderer.SetPosition(0, transform.position);
+				lineRenderer.SetPosition(1, ghost.transform.position);
 				transform.position = endPosition;
 				startRotation = transform.rotation;
 				endRotation = ghost.transform.rotation;
@@ -54,7 +66,7 @@ public class MoveShip : MonoBehaviour {
 				period = (Quaternion.Angle(startRotation, endRotation)/180)*3;
 				time = 0;
 			} else {
-				transform.position = Vector3.Slerp (startPosition, endPosition, time / period);
+				transform.position = Vector3.Lerp (startPosition, endPosition, time / period);
 			}
 			//Vector3 vec = ghost.transform.position - transform.position;
 			//GetComponent<Rigidbody> ().AddForce (vec, ForceMode.Acceleration);
@@ -72,6 +84,25 @@ public class MoveShip : MonoBehaviour {
 			}
 			break;
 		}
+		}
+	}
+
+	void Update() {
+		if (ghost != null) {
+			lineRenderer.enabled = true;
+			lineRenderer.SetPosition (0, transform.position);
+			lineRenderer.SetPosition (1, ghost.transform.position);
+			float distance = Vector3.Distance(transform.position, ghost.transform.position);
+			Vector3 fwd = lineRenderer.transform.TransformDirection(Vector3.forward);
+			if(Physics.Raycast(transform.position, fwd, distance)) {
+				lineRenderer.SetColors(c1, c1);
+			}
+			else {
+				lineRenderer.SetColors(c2, c2);
+			}
+
+		} else {
+			lineRenderer.enabled = false;
 		}
 	}
 
