@@ -7,8 +7,9 @@ public class Selector : MonoBehaviour {
 	public GameObject selection;
 	/// <summary>
 	/// A float used to determine how big the selector sphere is in relation the
-	/// selected object. Default 0.12.
+	/// selected object. 0.12 is good.
 	/// </summary>
+	[Tooltip("How big the selection sphere is in relation to the selected object. 0.12 is good.")]
 	public float sphereScale;
 
 	/// <summary>
@@ -39,7 +40,6 @@ public class Selector : MonoBehaviour {
 		Vector3 selectionSize = selection.GetComponent<Renderer>().bounds.size;
 		float maxDimension = Mathf.Max(selectionSize.x, selectionSize.y, selectionSize.z);
 		float zScale = maxDimension * sphereScale;
-		transform.localScale = new Vector3(zToXyScale * zScale, zToXyScale * zScale,
-		                                   sphereScale*maxDimension);
+		transform.localScale = new Vector3(zToXyScale * zScale, zToXyScale * zScale, zScale);
 	}
 }
