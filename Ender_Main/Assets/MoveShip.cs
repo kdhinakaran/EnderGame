@@ -95,8 +95,9 @@ public class MoveShip : MonoBehaviour {
 			lineRenderer.SetPosition (0, transform.position);
 			lineRenderer.SetPosition (1, ghost.transform.position);
 			float distance = Vector3.Distance(transform.position, ghost.transform.position);
-			Vector3 fwd = lineRenderer.transform.TransformDirection(Vector3.forward);
-			if(Physics.Raycast(transform.position, fwd, distance)) {
+			Vector3 heading = ghost.transform.position - transform.position;
+			Vector3 direction = heading / heading.magnitude;
+			if(Physics.Raycast(transform.position, direction, heading.magnitude)) {
 				lineRenderer.SetColors(c1, c1);
 			}
 			else {

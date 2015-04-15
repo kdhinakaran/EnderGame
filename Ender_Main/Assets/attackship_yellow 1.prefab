@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRender: {fileID: 161374}
-  c1: {r: .456930429, g: 1, b: .0156862736, a: 1}
+  c1: {r: 1, g: 0, b: 0, a: 1}
   c2: {r: .489655018, g: 1, b: 0, a: 1}
 --- !u!114 &11476452
 MonoBehaviour:
