@@ -18,7 +18,7 @@ public class WandCollider : MonoBehaviour {
 	}
 
 	void Update() {
-		if (wand.SelectionButtonIsDown () && selection != null && selection.tag.Equals ("Firezone")) {
+		if (wand.SelectionButtonIsDown () && selection != null) {
 			selection.transform.position = transform.position;
 		}
 		if (wand.SelectionButtonWasPressed () && selection != null) {
@@ -47,7 +47,7 @@ public class WandCollider : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (wand.SelectionButtonIsDown () || !(other.gameObject.tag.Equals("Ship") || other.gameObject.tag.Equals("Firezone")))
+		if (wand.SelectionButtonIsDown () || !(other.gameObject.tag.Equals("Ship")))
 			return;
 		if (selection != null) {
 			float  ms = Vector3.Distance(gameObject.transform.position, selection.transform.position);
@@ -62,7 +62,7 @@ public class WandCollider : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider other) {
-		if (wand.SelectionButtonIsDown () || !(other.gameObject.tag.Equals("Ship") || other.gameObject.tag.Equals("Firezone")))
+		if (wand.SelectionButtonIsDown () || !(other.gameObject.tag.Equals("Ship")))
 			return;
 		if(selection == null)
 			SetSelection(other.gameObject);
@@ -75,7 +75,7 @@ public class WandCollider : MonoBehaviour {
 		
 	}
 	void OnTriggerExit(Collider other) {
-		if (wand.SelectionButtonIsDown () || !(other.gameObject.tag.Equals("Ship") || other.gameObject.tag.Equals("Firezone")))
+		if (wand.SelectionButtonIsDown () || !(other.gameObject.tag.Equals("Ship")))
 			return;
 		if (other.gameObject == selection)
 			SetSelection(null);

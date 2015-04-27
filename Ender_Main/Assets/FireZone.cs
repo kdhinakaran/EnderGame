@@ -18,10 +18,10 @@ public class FireZone : MonoBehaviour {
 
 	private Color first = new Color(120f/255f, 75f/255f, 55f/255f, 255f/255f);
 	private Color second = new Color(170f/255f, 100f/255f, 25f/255f, 255f/255f);
+
+	public bool instantiated = false;
 	// Use this for initialization
 	void Start () {
-		Vector3 position = transform.TransformPoint(new Vector3(0, -0.5f, 0));
-		zone = (GameObject)Instantiate (firezone, position, transform.rotation);
 		detectShips = (DetectShips)zone.GetComponent("DetectShips");
 		fireMissile = (FireMissile)GetComponent ("FireMissile");
 
@@ -33,11 +33,18 @@ public class FireZone : MonoBehaviour {
 
 		rotationValue = Random.value;
 	}
-	
+
+	public void EnableFirezone(Vector3 position) {
+		zone = (GameObject)Instantiate (firezone, position, transform.rotation);
+		instantiated = true;
+	}
+
 	float period = 4;
 	float time = 0;
 	// Update is called once per frame
 	void Update () {
+		if (!instantiated)
+			return;
 		lineRenderer.SetPosition(0, transform.position);
 		lineRenderer.SetPosition(1, zone.transform.position);
 		bool inRange = Vector3.Distance (transform.position, zone.transform.position) < 5;
