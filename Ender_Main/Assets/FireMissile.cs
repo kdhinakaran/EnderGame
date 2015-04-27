@@ -13,10 +13,10 @@ public class FireMissile : MonoBehaviour {
 	
 	}
 
-	public void Fire(Vector3 target) {
+	public void Fire(Vector3 target, float scale) {
 		GameObject newMissile = (GameObject)Instantiate (missile, transform.position, Quaternion.identity);
-		
+		Vector3 vec = Random.insideUnitSphere;
 		Missile mis = (Missile)newMissile.GetComponent("Missile");
-		mis.SetTarget (target);
+		mis.SetTarget (target + vec * scale);
 	}
 }

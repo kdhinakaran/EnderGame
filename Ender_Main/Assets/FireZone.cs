@@ -58,12 +58,13 @@ public class FireZone : MonoBehaviour {
 		
 		time += Time.deltaTime;
 		if (detectShips.ShipsInside () && inRange && time > period) {
-			fireMissile.Fire(zone.transform.position);
+			float radius = zone.GetComponent<Renderer>().bounds.extents.magnitude*0.5f;
+			fireMissile.Fire(zone.transform.position, radius);
 			time = 0;
 		}
 		// Color.Lerp(first, second, time/period)
-		zone.GetComponent<Renderer> ().material.SetColor ("_EmissionColor", Color.white);
-		zone.GetComponent<Renderer> ().material.SetColor ("_Color", Color.white);
-		zone.GetComponent<Renderer> ().material.color = Color.white;
+		zone.gameObject.GetComponent<Renderer> ().material.SetColor ("_EmissionColor", Color.white);
+		zone.gameObject.GetComponent<Renderer> ().material.SetColor ("_Color", Color.white);
+		zone.gameObject.GetComponent<Renderer> ().material.color = Color.white;
 	}
 }
