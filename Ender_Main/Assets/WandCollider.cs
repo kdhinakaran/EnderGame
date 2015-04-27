@@ -13,7 +13,7 @@ public class WandCollider : MonoBehaviour {
 	private GameObject currentGhost;
 
 	void Start(){
-		selector = (Selector)GameObject.Find("Selector_Sphere").GetComponent("Selector");
+		selector = (Selector)GameObject.Find("Selector Sphere").GetComponent("Selector");
 		wand = GetComponentInParent<RUISWand>();
 	}
 

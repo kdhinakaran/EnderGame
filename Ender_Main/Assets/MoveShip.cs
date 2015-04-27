@@ -47,6 +47,8 @@ public class MoveShip : MonoBehaviour {
 				transform.Rotate (new Vector3 (-90,0,0));
 				state = State.MOVE;
 
+				//gameObject.GetComponent<ParticleSystem>().enableEmission = true;
+
 				period = Vector3.Distance(startPosition, endPosition)*4;
 				time = 0;
 			} else {
@@ -64,6 +66,8 @@ public class MoveShip : MonoBehaviour {
 				transform.position = endPosition;
 				startRotation = transform.rotation;
 				endRotation = ghost.transform.rotation;
+
+				//gameObject.GetComponent<ParticleSystem>().enableEmission = false;
 
 				period = (Quaternion.Angle(startRotation, endRotation)/180)*3;
 				time = 0;
