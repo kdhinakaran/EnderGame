@@ -8,19 +8,15 @@ public class WandCollider : MonoBehaviour {
 	private GameObject selection = null;
 
 	private Selector selector;
-	private RUISWand wand;
+	public RUISWand wand;
 
 	private GameObject currentGhost;
 
 	void Start(){
 		selector = (Selector)GameObject.Find("Selector Sphere").GetComponent("Selector");
-		wand = GetComponentInParent<RUISWand>();
 	}
 
 	void Update() {
-		if (wand.SelectionButtonIsDown () && selection != null) {
-			selection.transform.position = transform.position;
-		}
 		if (wand.SelectionButtonWasPressed () && selection != null) {
 
 			if(currentGhost == null && selection.tag.Equals("Ship")){

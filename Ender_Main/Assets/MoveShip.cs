@@ -4,6 +4,7 @@ using System.Collections;
 public class MoveShip : MonoBehaviour {
 
 	public GameObject lineRender;
+	public GameObject afterburner;
 
 	private Vector3 moveTo;
 	private GameObject ghost;
@@ -12,6 +13,7 @@ public class MoveShip : MonoBehaviour {
 	private bool move = false;
 
 	private LineRenderer lineRenderer;
+	private ParticleSystem afterburnerParticle;
 
 	public Color c1 = Color.yellow;
 	public Color c2 = Color.red;
@@ -32,6 +34,7 @@ public class MoveShip : MonoBehaviour {
 		lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
 		lineRenderer.SetColors(c1, c2);
 
+		afterburnerParticle = afterburner.GetComponent<ParticleSystem>();
 	}
 	
 	// Update is called once per frame
@@ -47,7 +50,7 @@ public class MoveShip : MonoBehaviour {
 				transform.Rotate (new Vector3 (-90,0,0));
 				state = State.MOVE;
 
-				//gameObject.GetComponent<ParticleSystem>().enableEmission = true;
+				afterburnerParticle.enableEmission = true;
 
 				period = Vector3.Distance(startPosition, endPosition)*4;
 				time = 0;
@@ -67,7 +70,7 @@ public class MoveShip : MonoBehaviour {
 				startRotation = transform.rotation;
 				endRotation = ghost.transform.rotation;
 
-				//gameObject.GetComponent<ParticleSystem>().enableEmission = false;
+				afterburnerParticle.enableEmission = false;
 
 				period = (Quaternion.Angle(startRotation, endRotation)/180)*3;
 				time = 0;

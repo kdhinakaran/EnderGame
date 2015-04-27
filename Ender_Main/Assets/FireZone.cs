@@ -6,7 +6,7 @@ public class FireZone : MonoBehaviour {
 
 	public GameObject lineRender;
 
-	private GameObject zone;
+	public GameObject zone;
 	private LineRenderer lineRenderer;
 
 	public Color c1 = Color.yellow;
@@ -22,7 +22,6 @@ public class FireZone : MonoBehaviour {
 	public bool instantiated = false;
 	// Use this for initialization
 	void Start () {
-		detectShips = (DetectShips)zone.GetComponent("DetectShips");
 		fireMissile = (FireMissile)GetComponent ("FireMissile");
 
 		lineRenderer = lineRender.GetComponent<LineRenderer>();
@@ -36,6 +35,7 @@ public class FireZone : MonoBehaviour {
 
 	public void EnableFirezone(Vector3 position) {
 		zone = (GameObject)Instantiate (firezone, position, transform.rotation);
+		detectShips = (DetectShips)zone.GetComponent("DetectShips");
 		instantiated = true;
 	}
 
