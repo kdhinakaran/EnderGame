@@ -10,6 +10,9 @@ GameObject:
   - 4: {fileID: 406026}
   - 33: {fileID: 3394640}
   - 23: {fileID: 2347812}
+  - 64: {fileID: 6483194}
+  - 54: {fileID: 5421524}
+  - 114: {fileID: 11464038}
   m_Layer: 0
   m_Name: missile_1
   m_TagString: Untagged
@@ -60,6 +63,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147864}
   m_Mesh: {fileID: 4300000, guid: 73731611f89ad4c358763a8cefa8fba3, type: 3}
+--- !u!54 &5421524
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147864}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &6483194
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147864}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 73731611f89ad4c358763a8cefa8fba3, type: 3}
+--- !u!114 &11464038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badd00dcd52fad14a8a6a8e60b7e4b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 119714, guid: c1c01c2052536814897319c1a33c4570, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
