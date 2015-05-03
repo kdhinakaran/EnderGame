@@ -13,6 +13,10 @@ public class Missile : MonoBehaviour {
 		MOVE,
 		EXPLODE
 	}
+
+	// holds the gameobject who shot this missile
+	private GameObject origin;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -45,7 +49,8 @@ public class Missile : MonoBehaviour {
 		}
 	}
 
-	public void SetTarget(Vector3 target){
+	public void SetTarget(GameObject origin, Vector3 target) {
+		this.origin = origin;
 		state = State.MOVE;
 		
 		period = 20;
@@ -70,11 +75,15 @@ public class Missile : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag.Equals ("EnemyShip"))
+		if (other.gameObject.tag.Equals ("Missile")) {
 			Explode ();
-		else if(other.gameObject.tag.Equals ("Missile")) {
-			Explode();
-			Destroy(other.gameObject);
+			Destroy (other.gameObject);
+		} else if (!other.gameObject.Equals (origin) && !other.gameObject.name.Equals ("Radar")) {
+			Debug.Log("hit " + other.gameObject.name);
+			HitTaker hittaker = other.gameObject.GetComponent<HitTaker>();
+			if(hittaker != null)
+				hittaker.hit(30);
+			Explode ();
 		}
 	}
 }

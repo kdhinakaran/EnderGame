@@ -169,6 +169,7 @@ GameObject:
   - 114: {fileID: 11459868}
   - 114: {fileID: 11487050}
   - 114: {fileID: 11488120}
+  - 114: {fileID: 11428714}
   m_Layer: 0
   m_Name: attackship_yellow 1
   m_TagString: Ship
@@ -470,6 +471,19 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11428714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf38186b104440947b2cdee24bfcd884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 119714, guid: c1c01c2052536814897319c1a33c4570, type: 2}
+  health: 100
 --- !u!114 &11439468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -613,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82f16a1e34ab9d4c8ff6e87c9461291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 173056, guid: c83a1251551214f46af3441879021281, type: 2}
+  missile: {fileID: 109030, guid: 3c8e0b9350b4d4a138fcfed60a07ed34, type: 2}
 --- !u!120 &12016024
 LineRenderer:
   m_ObjectHideFlags: 1
