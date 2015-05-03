@@ -25,7 +25,8 @@ public class WandCollider : MonoBehaviour {
 			} 
 		} else if (wand.SelectionButtonWasReleased () && currentGhost != null) {
 			
-			MoveShip ship = (MoveShip)selection.GetComponent("MoveShip");
+			//MoveShip ship = (MoveShip)selection.GetComponent("MoveShip");
+			MoveShipPhysics ship = (MoveShipPhysics)selection.GetComponent("MoveShipPhysics");
 			ship.SetGhost(currentGhost);
 
 			currentGhost.transform.parent = null;
