@@ -23,7 +23,7 @@ public class HealthBar : MonoBehaviour {
 		image.color = Color.Lerp(minColor, maxColor, Mathf.Lerp(minValue, maxValue, transform.localScale.x));
 	}
 
-	void takeDamage(int damage) {
-
+	public void setBarLength(float length) {
+		transform.localScale = new Vector3(length, transform.localScale.y, transform.localScale.z);
 	}
 }
