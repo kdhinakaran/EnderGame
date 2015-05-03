@@ -306,7 +306,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165774}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 014123f2968998d408e4e18465ef4e4d, type: 3}
   m_Name: 
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165774}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe0a821c75b56684c817c39eae67dbc7, type: 3}
   m_Name: 
@@ -422,6 +422,7 @@ MonoBehaviour:
   afterburner: {fileID: 142114}
   c1: {r: 1, g: 0, b: .0156862754, a: 1}
   c2: {r: 0, g: 1, b: 0, a: 1}
+  MAX_POWER: 1
 --- !u!120 &12016024
 LineRenderer:
   m_ObjectHideFlags: 1
