@@ -7,7 +7,7 @@ public class Billboard : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.camera = Camera.main;
+		this.camera = GameObject.Find("CameraLeft").GetComponent<Camera>();
 	}
 	
 	// Update is called once per frame
