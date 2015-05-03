@@ -20,7 +20,7 @@ public class WandCollider : MonoBehaviour {
 		if (wand.SelectionButtonWasPressed () && selection != null) {
 
 			if(currentGhost == null && selection.tag.Equals("Ship")){
-				currentGhost = (GameObject)Instantiate (ghost, selection.transform.position, selection.transform.localRotation);
+				currentGhost = (GameObject)Instantiate (ghost, selection.transform.position, selection.transform.rotation);
 				currentGhost.transform.parent = this.transform;
 			} 
 		} else if (wand.SelectionButtonWasReleased () && currentGhost != null) {
