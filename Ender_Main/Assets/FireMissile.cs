@@ -17,6 +17,6 @@ public class FireMissile : MonoBehaviour {
 		GameObject newMissile = (GameObject)Instantiate (missile, transform.position, Quaternion.identity);
 		Vector3 vec = Random.insideUnitSphere;
 		Missile mis = (Missile)newMissile.GetComponent("Missile");
-		mis.SetTarget (target + vec * scale);
+		mis.SetTarget (gameObject, target + vec * scale);
 	}
 }
