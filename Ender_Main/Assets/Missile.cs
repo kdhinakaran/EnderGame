@@ -57,7 +57,7 @@ public class Missile : MonoBehaviour {
 		time = 0;
 		
 		Vector3 vec = target - transform.position;
-		GetComponent<Rigidbody> ().AddForce (vec*100, ForceMode.Acceleration);
+		GetComponent<Rigidbody> ().AddForce (vec.normalized*10, ForceMode.Acceleration);
 
 		transform.LookAt (target);
 	}
@@ -71,13 +71,13 @@ public class Missile : MonoBehaviour {
 
 	void Explode(){
 		GameObject kaboom = (GameObject)Instantiate (explosion, transform.position, transform.rotation);
-		AudioSource.PlayClipAtPoint(explosionSound, transform.position, 0.2f);
 		Destroy(gameObject);
 		Destroy (kaboom, 2.0f);
 	}
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag.Equals ("Missile")) {
+			AudioSource.PlayClipAtPoint(explosionSound, transform.position, 0.2f);
 			Explode ();
 			Destroy (other.gameObject);
 		} else if (!other.gameObject.Equals (origin) && !other.gameObject.name.Equals ("Radar")) {
@@ -85,6 +85,7 @@ public class Missile : MonoBehaviour {
 			HitTaker hittaker = other.gameObject.GetComponent<HitTaker>();
 			if(hittaker != null)
 				hittaker.hit(30);
+			AudioSource.PlayClipAtPoint(explosionSound, transform.position, 0.2f);
 			Explode ();
 		}
 	}
