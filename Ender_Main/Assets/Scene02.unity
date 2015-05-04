@@ -5203,6 +5203,7 @@ GameObject:
   - 114: {fileID: 1453813430}
   - 114: {fileID: 1453813431}
   - 114: {fileID: 1453813432}
+  - 81: {fileID: 1453813434}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -5330,6 +5331,13 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!81 &1453813434
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1453813428}
+  m_Enabled: 1
 --- !u!1001 &1461441909
 Prefab:
   m_ObjectHideFlags: 0
@@ -5994,6 +6002,10 @@ Prefab:
     - target: {fileID: 486274, guid: 477ac3c84c01f4a14803dfa3ef396137, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13533572, guid: 477ac3c84c01f4a14803dfa3ef396137, type: 2}
+      propertyPath: m_Radius
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 477ac3c84c01f4a14803dfa3ef396137, type: 2}
