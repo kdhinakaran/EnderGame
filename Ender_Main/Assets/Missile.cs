@@ -4,7 +4,7 @@ using System.Collections;
 public class Missile : MonoBehaviour {
 
 	public GameObject explosion;
-	private AudioSource audio;
+	public AudioClip explosionSound;
 	float period, time;
 
 	private State state = State.IDLE;
@@ -20,7 +20,6 @@ public class Missile : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.audio = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -72,9 +71,8 @@ public class Missile : MonoBehaviour {
 
 	void Explode(){
 		GameObject kaboom = (GameObject)Instantiate (explosion, transform.position, transform.rotation);
-		GetComponent<AudioSource> ().Play ();
-		GetComponent<Renderer> ().enabled = false;
-		Destroy(gameObject, 2.0f);
+		AudioSource.PlayClipAtPoint(explosionSound, transform.position, 0.2f);
+		Destroy(gameObject);
 		Destroy (kaboom, 2.0f);
 	}
 

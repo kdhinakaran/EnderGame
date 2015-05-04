@@ -485,6 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 119714, guid: c1c01c2052536814897319c1a33c4570, type: 2}
   health: 100
+  audio: {fileID: 8300000, guid: 6d4b4d12325c34f34825950dd7b22d94, type: 3}
 --- !u!114 &11439468
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,6 +5,7 @@ public class HitTaker : MonoBehaviour {
 	
 	public GameObject explosion;
 	public float health = 100;
+	public AudioClip audio;
 
 	// Use this for initialization
 	void Start () {
@@ -33,6 +34,8 @@ public class HitTaker : MonoBehaviour {
 		FireZone firezone = GetComponent<FireZone> ();
 		if (firezone != null)
 			Destroy (firezone.zone);
+		GetComponent<Renderer>().enabled = false;
+		AudioSource.PlayClipAtPoint(audio, transform.position);
 		Destroy(gameObject);
 		MoveShipPhysics ship = (MoveShipPhysics)gameObject.GetComponent("MoveShipPhysics");
 		ship.DestroyGhost ();
