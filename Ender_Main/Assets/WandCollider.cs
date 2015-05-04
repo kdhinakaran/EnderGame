@@ -10,6 +10,7 @@ public class WandCollider : MonoBehaviour {
 	private GameObject selection = null;
 
 	private Selector selector;
+	private Indicator indicator;
 	public RUISWand wand;
 
 	private GameObject currentGhost;
@@ -18,6 +19,7 @@ public class WandCollider : MonoBehaviour {
 
 	void Start(){
 		selector = (Selector)GameObject.Find("Selector Sphere").GetComponent("Selector");
+		indicator = (Indicator)GameObject.Find("Indicator Sphere").GetComponent("Indicator");
 	}
 
 	void Update() {
@@ -52,18 +54,18 @@ public class WandCollider : MonoBehaviour {
 			return;
 		}
 		this.selection = select;
-		selector.selection = select;
+		selector.SetSelection(select);
 	}
 
-	/*void SetIndicator(GameObject indicator){
-		selector.indicator = indicator;
-	}*/
+	void SetIndicator(GameObject indicator){
+		this.indicator.indicator = indicator;
+	}
 
 	void OnTriggerEnter(Collider other) {
 		if (!(other.gameObject.tag.Equals("Ship")))  // just allow ships 
 			return;
 		if(!wand.SelectionButtonWasPressed()) { // just select if pressed right now
-			//SetIndicator(other.gameObject);
+			SetIndicator(other.gameObject);
 			return;
 		}
 		if (selection != null) {
@@ -82,7 +84,7 @@ public class WandCollider : MonoBehaviour {
 		if (!(other.gameObject.tag.Equals("Ship"))) // just allow ships
 			return;
 		if(!wand.SelectionButtonWasPressed()) { // just select if pressed right now
-			//SetIndicator(other.gameObject);
+			SetIndicator(other.gameObject);
 			return;
 		}
 		if(selection == null)
@@ -96,9 +98,9 @@ public class WandCollider : MonoBehaviour {
 		
 	}
 	void OnTriggerExit(Collider other) {
-		/*if (wand.SelectionButtonIsDown () || !(other.gameObject.tag.Equals("Ship")))
+		if (wand.SelectionButtonIsDown () || !(other.gameObject.tag.Equals("Ship")))
 			return;
-		if (other.gameObject == selector.indicator)
-			SetIndicator(null);*/
+		if (other.gameObject == indicator.indicator)
+			SetIndicator(null);
 	}
 }

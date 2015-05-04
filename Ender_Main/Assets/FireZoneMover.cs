@@ -24,6 +24,7 @@ public class FireZoneMover : MonoBehaviour {
 				firstposition = startposition;
 				if(!firezone.instantiated)
 					firezone.EnableFirezone(startposition);
+				//firezone.PlaySound();
 			}
 			else if(wand.SelectionButtonIsDown () && startposition != Vector3.zero && firezone.zone){
 				float dist = Vector3.Distance(firstposition, wand.transform.position)*MOVMENT_FACTOR;
@@ -32,6 +33,7 @@ public class FireZoneMover : MonoBehaviour {
 			}
 			else if(wand.SelectionButtonWasReleased()){
 				startposition = Vector3.zero;
+				firezone.PlaySound();
 			}
 		}
 	}

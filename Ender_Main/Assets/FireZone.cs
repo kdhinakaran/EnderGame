@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class FireZone : MonoBehaviour {
+	// ADJUST THAT
+	private float RANGE_FACTOR = 1f;
+
 	public GameObject firezone;
 
 	public GameObject lineRender;
@@ -28,7 +31,7 @@ public class FireZone : MonoBehaviour {
 		lineRenderer.SetWidth(0.01F, 0.01F);
 		lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
 		lineRenderer.SetColors(c1, c2);
-		lineRenderer.enabled = true;
+		lineRenderer.enabled = false;
 
 		rotationValue = Random.value;
 	}
@@ -37,6 +40,7 @@ public class FireZone : MonoBehaviour {
 		zone = (GameObject)Instantiate (firezone, position, transform.rotation);
 		detectShips = (DetectShips)zone.GetComponent("DetectShips");
 		instantiated = true;
+		lineRenderer.enabled = true;
 	}
 
 	float period = 4;
@@ -47,7 +51,7 @@ public class FireZone : MonoBehaviour {
 			return;
 		lineRenderer.SetPosition(0, transform.position);
 		lineRenderer.SetPosition(1, zone.transform.position);
-		bool inRange = Vector3.Distance (transform.position, zone.transform.position) < 5;
+		bool inRange = Vector3.Distance (transform.position, zone.transform.position) < RANGE_FACTOR;
 		if (!inRange) {
 			lineRenderer.SetColors(Color.gray, Color.gray);
 		}
@@ -66,5 +70,10 @@ public class FireZone : MonoBehaviour {
 		zone.gameObject.GetComponent<Renderer> ().material.SetColor ("_EmissionColor", Color.white);
 		zone.gameObject.GetComponent<Renderer> ().material.SetColor ("_Color", Color.white);
 		zone.gameObject.GetComponent<Renderer> ().material.color = Color.white;
+	}
+
+	public void PlaySound() {
+		AudioSource audio = zone.gameObject.GetComponent<AudioSource>();
+		audio.Play();
 	}
 }
