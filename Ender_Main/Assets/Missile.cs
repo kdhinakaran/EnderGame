@@ -72,9 +72,10 @@ public class Missile : MonoBehaviour {
 
 	void Explode(){
 		GameObject kaboom = (GameObject)Instantiate (explosion, transform.position, transform.rotation);
-		Destroy(gameObject);
+		GetComponent<AudioSource> ().Play ();
+		GetComponent<Renderer> ().enabled = false;
+		Destroy(gameObject, 2.0f);
 		Destroy (kaboom, 2.0f);
-		this.audio.Play ();
 	}
 
 	void OnTriggerEnter(Collider other) {
