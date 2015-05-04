@@ -70,8 +70,9 @@ public class Missile : MonoBehaviour {
 	}
 
 	void Explode(){
-		Instantiate (explosion, transform.position, transform.rotation);
+		GameObject kaboom = (GameObject)Instantiate (explosion, transform.position, transform.rotation);
 		Destroy(gameObject);
+		Destroy (kaboom, 2.0f);
 	}
 
 	void OnTriggerEnter(Collider other) {

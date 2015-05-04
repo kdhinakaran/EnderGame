@@ -28,6 +28,7 @@ public class HitTaker : MonoBehaviour {
 
 	void Explode(){
 		Instantiate (explosion, transform.position, transform.rotation);
+
 		
 		FireZone firezone = GetComponent<FireZone> ();
 		if (firezone != null)
