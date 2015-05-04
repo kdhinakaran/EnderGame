@@ -4,6 +4,8 @@ using System.Collections;
 public class WandCollider : MonoBehaviour {
 	// ADJUST THAT
 	private float DISTANCE_FACTOR = 0.1f;
+	// ADJUST THAT
+	private float MOVMENT_FACTOR = 2f;
 
 	public GameObject ghost;
 
@@ -16,6 +18,7 @@ public class WandCollider : MonoBehaviour {
 	private GameObject currentGhost;
 
 	Vector3 posonpress;
+	Vector3 startpos;
 
 	void Start(){
 		selector = (Selector)GameObject.Find("Selector Sphere").GetComponent("Selector");
@@ -28,15 +31,23 @@ public class WandCollider : MonoBehaviour {
 			//	currentGhost = (GameObject)Instantiate (ghost, selection.transform.position, selection.transform.rotation);
 			//	currentGhost.transform.parent = this.transform;
 				posonpress = this.transform.position;
+				startpos = posonpress;
 			}
 
 		} else if (wand.SelectionButtonIsDown() && selection != null) {
 			if(currentGhost == null && selection.tag.Equals("Ship")){
 				if(Vector3.Distance(transform.position, posonpress) > DISTANCE_FACTOR) {
 					currentGhost = (GameObject)Instantiate (ghost, selection.transform.position, selection.transform.rotation);
-					currentGhost.transform.parent = this.transform;
+					currentGhost.transform.position = this.transform.position;
+					currentGhost.transform.rotation = this.transform.rotation;
 				}
 			}
+			else if(currentGhost){
+				float dist = Vector3.Distance(posonpress, this.transform.position)*MOVMENT_FACTOR;
+				currentGhost.transform.position += (this.transform.position - startpos)*dist;
+				currentGhost.transform.rotation = this.transform.rotation;
+			}
+			startpos = this.transform.position;
 		} else if (wand.SelectionButtonWasReleased () && currentGhost != null) {
 			
 			//MoveShip ship = (MoveShip)selection.GetComponent("MoveShip");

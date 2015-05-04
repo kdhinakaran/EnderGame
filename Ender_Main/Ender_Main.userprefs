@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MoveShipPhysics.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\WandCollider.cs">
     <Files>
-      <File FileName="Assets\HealthBar.cs" Line="30" Column="1" />
-      <File FileName="Assets\MoveShipPhysics.cs" Line="51" Column="34" />
-      <File FileName="Assets\MoveShip.cs" Line="76" Column="14" />
+      <File FileName="Assets\WandCollider.cs" Line="8" Column="34" />
+      <File FileName="Assets\FireZoneMover.cs" Line="4" Column="45" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
