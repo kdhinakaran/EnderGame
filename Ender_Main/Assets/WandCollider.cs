@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class WandCollider : MonoBehaviour {
+	// ADJUST THAT
+	private float DISTANCE_FACTOR = 0.1f;
 
 	public GameObject ghost;
 
@@ -12,17 +14,27 @@ public class WandCollider : MonoBehaviour {
 
 	private GameObject currentGhost;
 
+	Vector3 posonpress;
+
 	void Start(){
 		selector = (Selector)GameObject.Find("Selector Sphere").GetComponent("Selector");
 	}
 
 	void Update() {
 		if (wand.SelectionButtonWasPressed () && selection != null) {
-
 			if(currentGhost == null && selection.tag.Equals("Ship")){
-				currentGhost = (GameObject)Instantiate (ghost, selection.transform.position, selection.transform.rotation);
-				currentGhost.transform.parent = this.transform;
-			} 
+			//	currentGhost = (GameObject)Instantiate (ghost, selection.transform.position, selection.transform.rotation);
+			//	currentGhost.transform.parent = this.transform;
+				posonpress = this.transform.position;
+			}
+
+		} else if (wand.SelectionButtonIsDown() && selection != null) {
+			if(currentGhost == null && selection.tag.Equals("Ship")){
+				if(Vector3.Distance(transform.position, posonpress) > DISTANCE_FACTOR) {
+					currentGhost = (GameObject)Instantiate (ghost, selection.transform.position, selection.transform.rotation);
+					currentGhost.transform.parent = this.transform;
+				}
+			}
 		} else if (wand.SelectionButtonWasReleased () && currentGhost != null) {
 			
 			//MoveShip ship = (MoveShip)selection.GetComponent("MoveShip");
@@ -43,9 +55,17 @@ public class WandCollider : MonoBehaviour {
 		selector.selection = select;
 	}
 
+	/*void SetIndicator(GameObject indicator){
+		selector.indicator = indicator;
+	}*/
+
 	void OnTriggerEnter(Collider other) {
-		if (wand.SelectionButtonIsDown () || !(other.gameObject.tag.Equals("Ship")))
+		if (!(other.gameObject.tag.Equals("Ship")))  // just allow ships 
 			return;
+		if(!wand.SelectionButtonWasPressed()) { // just select if pressed right now
+			//SetIndicator(other.gameObject);
+			return;
+		}
 		if (selection != null) {
 			float  ms = Vector3.Distance(gameObject.transform.position, selection.transform.position);
 			float  mo = Vector3.Distance(gameObject.transform.position, other.gameObject.transform.position);
@@ -59,8 +79,12 @@ public class WandCollider : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider other) {
-		if (wand.SelectionButtonIsDown () || !(other.gameObject.tag.Equals("Ship")))
+		if (!(other.gameObject.tag.Equals("Ship"))) // just allow ships
 			return;
+		if(!wand.SelectionButtonWasPressed()) { // just select if pressed right now
+			//SetIndicator(other.gameObject);
+			return;
+		}
 		if(selection == null)
 			SetSelection(other.gameObject);
 		else if (other.gameObject != selection) {
@@ -72,10 +96,9 @@ public class WandCollider : MonoBehaviour {
 		
 	}
 	void OnTriggerExit(Collider other) {
-		if (wand.SelectionButtonIsDown () || !(other.gameObject.tag.Equals("Ship")))
+		/*if (wand.SelectionButtonIsDown () || !(other.gameObject.tag.Equals("Ship")))
 			return;
-		if (other.gameObject == selection)
-			SetSelection(null);
-		
+		if (other.gameObject == selector.indicator)
+			SetIndicator(null);*/
 	}
 }
