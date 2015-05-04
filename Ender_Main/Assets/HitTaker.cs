@@ -33,5 +33,7 @@ public class HitTaker : MonoBehaviour {
 		if (firezone != null)
 			Destroy (firezone.zone);
 		Destroy(gameObject);
+		MoveShipPhysics ship = (MoveShipPhysics)gameObject.GetComponent("MoveShipPhysics");
+		ship.DestroyGhost ();
 	}
 }

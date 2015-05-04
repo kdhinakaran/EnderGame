@@ -269,7 +269,7 @@ public class MoveShipPhysics : MonoBehaviour {
 		targetPosition = ghost.transform.position;
 	}
 
-	void DestroyGhost(){
+	public void DestroyGhost(){
 		if (ghost != null) {
 			Destroy(ghost);
 			ghost = null;
