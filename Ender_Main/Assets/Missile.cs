@@ -80,7 +80,7 @@ public class Missile : MonoBehaviour {
 			AudioSource.PlayClipAtPoint(explosionSound, transform.position, 0.2f);
 			Explode ();
 			Destroy (other.gameObject);
-		} else if (!other.gameObject.Equals (origin) && !other.gameObject.name.Equals ("Radar")) {
+		} else if (!other.gameObject.Equals (origin) && isShip (other.gameObject)) {
 			Debug.Log("hit " + other.gameObject.name);
 			HitTaker hittaker = other.gameObject.GetComponent<HitTaker>();
 			if(hittaker != null)
@@ -88,5 +88,9 @@ public class Missile : MonoBehaviour {
 			AudioSource.PlayClipAtPoint(explosionSound, transform.position, 0.2f);
 			Explode ();
 		}
+	}
+
+	bool isShip(GameObject target) {
+		return (target.tag == "Ship" || target.tag == "EnemyShip"); 
 	}
 }
