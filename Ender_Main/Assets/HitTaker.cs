@@ -36,8 +36,10 @@ public class HitTaker : MonoBehaviour {
 			Destroy (firezone.zone);
 		GetComponent<Renderer>().enabled = false;
 		AudioSource.PlayClipAtPoint(audio, transform.position);
-		Destroy(gameObject);
 		MoveShipPhysics ship = (MoveShipPhysics)gameObject.GetComponent("MoveShipPhysics");
-		ship.DestroyGhost ();
+		if (ship != null) {
+			ship.DestroyGhost ();
+		}
+		Destroy(gameObject);
 	}
 }
