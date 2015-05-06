@@ -60,6 +60,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 486274}
+  - 65: {fileID: 6511454}
+  - 114: {fileID: 11470864}
   m_Layer: 0
   m_Name: turret_01
   m_TagString: EnemyShip
@@ -217,6 +219,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150292}
   m_Mesh: {fileID: 4300002, guid: e16330ca42ad445399d3f8dee4d9f4f5, type: 3}
+--- !u!65 &6511454
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149494}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .25, y: .25, z: .25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11412006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -299,6 +313,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11470864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf38186b104440947b2cdee24bfcd884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 119714, guid: c1c01c2052536814897319c1a33c4570, type: 2}
+  health: 100
+  audio: {fileID: 8300000, guid: 6d4b4d12325c34f34825950dd7b22d94, type: 3}
 --- !u!114 &11493302
 MonoBehaviour:
   m_ObjectHideFlags: 1

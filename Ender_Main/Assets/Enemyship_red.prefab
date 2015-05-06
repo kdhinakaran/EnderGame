@@ -93,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174452}
   m_LocalRotation: {x: -4.32977997e-17, y: .707106709, z: .707106829, w: -4.32978063e-17}
-  m_LocalPosition: {x: .0700000003, y: 1.773, z: -1.15999997}
+  m_LocalPosition: {x: 2.25200009, y: 1.40900004, z: -1.15999997}
   m_LocalScale: {x: .00999999978, y: .00999999791, z: .00999999791}
   m_Children:
   - {fileID: 492958}
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 119714, guid: c1c01c2052536814897319c1a33c4570, type: 2}
   health: 100
+  audio: {fileID: 8300000, guid: 6d4b4d12325c34f34825950dd7b22d94, type: 3}
 --- !u!114 &11445870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -278,7 +279,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: .100000001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &22278520
 CanvasRenderer:
