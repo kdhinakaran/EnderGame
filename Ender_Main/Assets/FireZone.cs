@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FireZone : MonoBehaviour {
 	// ADJUST THAT
-	private float RANGE_FACTOR = 1f;
+	public float RANGE_FACTOR = 1f;
 
 	public GameObject firezone;
 
@@ -62,7 +62,7 @@ public class FireZone : MonoBehaviour {
 		
 		time += Time.deltaTime;
 		if (detectShips.ShipsInside () && inRange && time > period) {
-			float radius = zone.GetComponent<Renderer>().bounds.extents.magnitude*0.5f;
+			float radius = zone.GetComponent<Renderer>().bounds.extents.magnitude*0.125f;
 			fireMissile.Fire(zone.transform.position, radius);
 			time = 0;
 		}
