@@ -5,7 +5,7 @@ public class WandCollider : MonoBehaviour {
 	// ADJUST THAT
 	private float DISTANCE_FACTOR = 0.1f;
 	// ADJUST THAT
-	private float MOVMENT_FACTOR = 2f;
+	private float MOVMENT_FACTOR = 5f;
 
 	public GameObject ghost;
 
@@ -13,6 +13,9 @@ public class WandCollider : MonoBehaviour {
 
 	private Selector selector;
 	private Indicator indicator;
+
+	// SET THIS IN THE EDITOR IF YOU WANT TO USE THE EXTENDED RANGE
+	public RUISPSMoveWand movewand;
 	public RUISWand wand;
 
 	private GameObject currentGhost;
@@ -25,29 +28,40 @@ public class WandCollider : MonoBehaviour {
 		indicator = (Indicator)GameObject.Find("Indicator Sphere").GetComponent("Indicator");
 	}
 
+	bool extendedRange() {
+		if (movewand != null)
+			return movewand.crossButtonDown;
+		return Input.GetKey (KeyCode.X);
+	}
+
 	void Update() {
 		if (wand.SelectionButtonWasPressed () && selection != null) {
 			if(currentGhost == null && selection.tag.Equals("Ship")){
 			//	currentGhost = (GameObject)Instantiate (ghost, selection.transform.position, selection.transform.rotation);
 			//	currentGhost.transform.parent = this.transform;
-				posonpress = this.transform.position;
-				startpos = posonpress;
+				posonpress = wand.transform.position;
+				if(extendedRange())
+					startpos = posonpress;
 			}
 
 		} else if (wand.SelectionButtonIsDown() && selection != null) {
 			if(currentGhost == null && selection.tag.Equals("Ship")){
 				if(Vector3.Distance(transform.position, posonpress) > DISTANCE_FACTOR) {
 					currentGhost = (GameObject)Instantiate (ghost, selection.transform.position, selection.transform.rotation);
-					currentGhost.transform.position = this.transform.position;
-					currentGhost.transform.rotation = this.transform.rotation;
+					if(extendedRange()) {
+						currentGhost.transform.position = wand.transform.position;
+						currentGhost.transform.rotation = wand.transform.rotation;
+					} else {
+						currentGhost.transform.parent = this.transform;
+					}
 				}
 			}
-			else if(currentGhost){
-				float dist = Vector3.Distance(posonpress, this.transform.position)*MOVMENT_FACTOR;
-				currentGhost.transform.position += (this.transform.position - startpos)*dist;
-				currentGhost.transform.rotation = this.transform.rotation;
+			else if(currentGhost && extendedRange()){
+				float dist = Vector3.Distance(posonpress, wand.transform.position)*MOVMENT_FACTOR;
+				currentGhost.transform.position += (wand.transform.position - startpos)*dist;
+				currentGhost.transform.rotation = wand.transform.rotation;
+				startpos = wand.transform.position;
 			}
-			startpos = this.transform.position;
 		} else if (wand.SelectionButtonWasReleased () && currentGhost != null) {
 			// ship got probably destroyed during drag
 			if(selection == null) {
