@@ -34,7 +34,9 @@ public class HitTaker : MonoBehaviour {
 		FireZone firezone = GetComponent<FireZone> ();
 		if (firezone != null)
 			Destroy (firezone.zone);
-		GetComponent<Renderer>().enabled = false;
+		Renderer renderer = GetComponent<Renderer> ();
+		if(renderer != null)
+			renderer.enabled = false;
 		AudioSource.PlayClipAtPoint(audio, transform.position);
 		MoveShipPhysics ship = (MoveShipPhysics)gameObject.GetComponent("MoveShipPhysics");
 		if (ship != null) {
