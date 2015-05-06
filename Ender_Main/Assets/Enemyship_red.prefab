@@ -92,8 +92,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174452}
-  m_LocalRotation: {x: -4.32977997e-17, y: .707106709, z: .707106829, w: -4.32978063e-17}
-  m_LocalPosition: {x: 2.25200009, y: 1.40900004, z: -1.15999997}
+  m_LocalRotation: {x: -4.3297803e-17, y: .707106769, z: .707106888, w: -4.32978096e-17}
+  m_LocalPosition: {x: .0700000003, y: 1.773, z: -1.15999997}
   m_LocalScale: {x: .00999999978, y: .00999999791, z: .00999999791}
   m_Children:
   - {fileID: 492958}
@@ -279,7 +279,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: .100000001
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &22278520
 CanvasRenderer:
@@ -310,7 +310,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144638}
-  m_LocalRotation: {x: 4.32977997e-17, y: -.707106709, z: -.707106829, w: -4.32978063e-17}
+  m_LocalRotation: {x: 4.3297803e-17, y: -.707106769, z: -.707106888, w: -4.32978096e-17}
   m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: .100000001, y: .0100000035, z: 0}
   m_Children:

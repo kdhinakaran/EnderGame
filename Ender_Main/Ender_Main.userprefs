@@ -1,9 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\WandCollider.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\..\ahtiaia2\ruisunity\Assets\Snowman\Scripts\GUI\ToggleDebugView.cs">
     <Files>
-      <File FileName="Assets\WandCollider.cs" Line="8" Column="34" />
-      <File FileName="Assets\FireZoneMover.cs" Line="4" Column="45" />
+      <File FileName="Assets\FireZone.cs" Line="1" Column="1" />
+      <File FileName="..\..\..\..\ahtiaia2\ruisunity\Assets\Snowman\Scripts\GUI\ToggleDebugView.cs" Line="62" Column="10" />
+      <File FileName="..\..\..\..\ahtiaia2\ruisunity\Assets\Snowman\Scripts\RUIS\StartLevelWhenKeyPressed.cs" Line="1" Column="1" />
+      <File FileName="..\..\..\..\ahtiaia2\ruisunity\Assets\Snowman\Scripts\GUI\DisplayCurrentLevel.cs" Line="1" Column="1" />
+      <File FileName="..\..\..\..\ahtiaia2\ruisunity\Assets\Snowman\Scripts\GUI\DisplayCurrentTimeBonus.cs" Line="1" Column="1" />
+      <File FileName="..\..\..\..\ahtiaia2\ruisunity\Assets\Snowman\Scripts\GUI\DisplayPointsMessage.cs" Line="1" Column="1" />
+      <File FileName="..\..\..\..\ahtiaia2\ruisunity\Assets\Snowman\Scripts\GUI\DisplayCurrentPoints.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

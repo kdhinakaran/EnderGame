@@ -7,12 +7,19 @@ public class WinLose : MonoBehaviour {
 	public RUISPSMoveWand wand2;
 
 	public Text text;
+
+	float startTime;
 	// Use this for initialization
 	void Start () {
+		startTime = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (startTime != 42 && Time.time - startTime > 15) {
+			text.text = "";
+			startTime = 42;
+		}
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("EnemyShip");
 		GameObject[] allied = GameObject.FindGameObjectsWithTag ("Ship");
 		if (enemies.Length == 0) {

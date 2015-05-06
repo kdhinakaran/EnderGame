@@ -87,6 +87,13 @@ public class Missile : MonoBehaviour {
 				hittaker.hit(30);
 			AudioSource.PlayClipAtPoint(explosionSound, transform.position, 0.2f);
 			Explode ();
+		} else if (!other.gameObject.Equals (origin) && other.gameObject.tag == "EnemyBase") {
+			Debug.Log("hit " + other.gameObject.name);
+			HitTaker hittaker = other.gameObject.GetComponent<HitTaker>();
+			if(hittaker != null)
+				hittaker.hit(30);
+			AudioSource.PlayClipAtPoint(explosionSound, transform.position, 0.2f);
+			Explode ();
 		}
 	}
 
