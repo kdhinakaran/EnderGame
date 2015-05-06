@@ -5,6 +5,9 @@ public class Missile : MonoBehaviour {
 
 	public GameObject explosion;
 	public AudioClip explosionSound;
+
+	public GameObject implosion;
+	public AudioClip implosionSound;
 	float period, time;
 
 	private State state = State.IDLE;
@@ -75,6 +78,12 @@ public class Missile : MonoBehaviour {
 		Destroy (kaboom, 2.0f);
 	}
 
+	void Implode(){
+		GameObject bloob = (GameObject)Instantiate (implosion, transform.position, transform.rotation);
+		Destroy(gameObject);
+		Destroy (bloob, 2.0f);
+	}
+
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag.Equals ("Missile")) {
 			AudioSource.PlayClipAtPoint(explosionSound, transform.position, 0.2f);
@@ -89,11 +98,8 @@ public class Missile : MonoBehaviour {
 			Explode ();
 		} else if (!other.gameObject.Equals (origin) && other.gameObject.tag == "EnemyBase") {
 			Debug.Log("hit " + other.gameObject.name);
-			HitTaker hittaker = other.gameObject.GetComponent<HitTaker>();
-			if(hittaker != null)
-				hittaker.hit(30);
-			AudioSource.PlayClipAtPoint(explosionSound, transform.position, 0.2f);
-			Explode ();
+			AudioSource.PlayClipAtPoint(implosionSound, transform.position, 0.2f);
+			Implode ();
 		}
 	}
 
