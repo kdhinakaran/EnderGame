@@ -135,6 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 119714, guid: c1c01c2052536814897319c1a33c4570, type: 2}
   explosionSound: {fileID: 8300000, guid: 6068dcf326ad04cc1a527e2deb7943e7, type: 3}
+  implosion: {fileID: 107342, guid: a63040137005eb34a89b4843485de0ee, type: 2}
+  implosionSound: {fileID: 8300000, guid: 6068dcf326ad04cc1a527e2deb7943e7, type: 3}
 --- !u!114 &11459022
 MonoBehaviour:
   m_ObjectHideFlags: 1

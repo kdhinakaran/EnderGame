@@ -11,6 +11,7 @@ TagManager:
   - Firezone
   - EnemyShip
   - Missile
+  - EnemyBase
   layers:
   - Default
   - TransparentFX

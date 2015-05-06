@@ -66,10 +66,11 @@ public class Missile : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
-		foreach (ContactPoint contact in collision.contacts) {
-			Debug.DrawRay(contact.point, contact.normal, Color.white);
+		if (!collision.gameObject.Equals (origin) && collision.gameObject.tag == "EnemyBase") {
+			Debug.Log("hit " + collision.gameObject.name);
+			AudioSource.PlayClipAtPoint(implosionSound, transform.position, 0.2f);
+			Implode ();
 		}
-		Debug.Log ("OnCollisionEnter");
 	}
 
 	void Explode(){
@@ -96,11 +97,7 @@ public class Missile : MonoBehaviour {
 				hittaker.hit(30);
 			AudioSource.PlayClipAtPoint(explosionSound, transform.position, 0.2f);
 			Explode ();
-		} else if (!other.gameObject.Equals (origin) && other.gameObject.tag == "EnemyBase") {
-			Debug.Log("hit " + other.gameObject.name);
-			AudioSource.PlayClipAtPoint(implosionSound, transform.position, 0.2f);
-			Implode ();
-		}
+		} 
 	}
 
 	bool isShip(GameObject target) {
