@@ -23,10 +23,11 @@ public class MoveShipPhysics : MonoBehaviour {
 	enum State {
 		IDLE,
 		START_ROTATE,
+		STOP_BEFORE,
 		MOVE_FAR,
 		MOVE_CLOSE,
 		MOVE_FINETUNE,
-		STOP,
+		STOP_AFTER,
 		END_ROTATE
 	}
 
@@ -58,7 +59,7 @@ public class MoveShipPhysics : MonoBehaviour {
 	private float BREAK_ENGINE = 0.1f;
 	private float MOVE_TOWARDS = 0.025f;
 
-	private float MAX_VELOCITY = 0.5f;
+	private float MAX_VELOCITY = 0.25f;
 
 	private Vector3 targetPosition;
 	private float originalDistance;
@@ -74,6 +75,11 @@ public class MoveShipPhysics : MonoBehaviour {
 	// Decelerate
 	void decelerate(float power) {
 		accelerate(power * DECELERATE_FACTOR);
+	}
+
+	// Ship velocity
+	void stopShip() {
+		rb.velocity = Vector3.zero;
 	}
 
 	// Ship velocity
@@ -120,6 +126,27 @@ public class MoveShipPhysics : MonoBehaviour {
 		switch (state) {
 		case State.IDLE:
 			break;
+		case State.STOP_BEFORE:
+			if(getShipVelocity().magnitude > 0.05f) {
+				slowDown(1.0f);
+			} else {
+				stopShip();
+
+				moveTo = ghost.transform.position;
+				startRotation = transform.rotation;
+				endRotation = Quaternion.LookRotation (ghost.transform.position - transform.position);
+				endRotation *= Quaternion.Euler(-90, 0, 0);
+				startPosition = transform.position;
+				endPosition = ghost.transform.position;
+				
+				move = true;
+				time = 0f;
+				period = (Quaternion.Angle(startRotation, endRotation) / 180.0f) * ROTATION_TIME;
+
+				state = State.START_ROTATE;
+			}
+
+			break;
 		case State.START_ROTATE:
 		{
 			time += Time.fixedDeltaTime;
@@ -129,11 +156,7 @@ public class MoveShipPhysics : MonoBehaviour {
 			} else {
 				state = State.MOVE_FAR;
 
-				transform.LookAt (ghost.transform);
-				transform.Rotate (new Vector3 (-90,0,0));
-
 				afterburnerParticle.enableEmission = true;
-				originalDistance = distanceToTarget();
 			}
 
 			break;
@@ -146,8 +169,6 @@ public class MoveShipPhysics : MonoBehaviour {
 			// Change to proximity moving, when we get close
 			if(distanceToTarget() < 0.75f) {
 				state = State.MOVE_CLOSE;
-
-				afterburnerParticle.enableEmission = false;
 			}
 
 			// Accelerate, if velocity is low
@@ -162,15 +183,21 @@ public class MoveShipPhysics : MonoBehaviour {
 			Debug.Log ("Move close. Velocity: " + getShipVelocity().magnitude);
 
 			// Almost at the target
-			if(getShipVelocity().magnitude < 0.2f) {
+			if(distanceToTarget() < 0.1f) {
+				afterburnerParticle.enableEmission = false;
+
 				state = State.MOVE_FINETUNE;
 			}
 
-			if(getShipVelocity().magnitude > 0.2f) {
-				decelerate (1.0f);
+			if(getShipVelocity().magnitude < 0.1f) {
+				moveTowardsTarget();
+				afterburnerParticle.enableEmission = true;
 			}
 
-			slowDown(1.0f);
+			if(getShipVelocity().magnitude > 0.1f) {
+				decelerate(1.0f);
+				afterburnerParticle.enableEmission = false;
+			}
 
 			break;
 		// Stop, when we are very close to the target
@@ -178,31 +205,34 @@ public class MoveShipPhysics : MonoBehaviour {
 		{
 			Debug.Log ("Move finetune. Velocity: " + getShipVelocity().magnitude);
 
-			if(distanceToTarget() > 0.1f) {
-				moveTowardsTarget();
+			if(getShipVelocity().magnitude > 0.1f) {
+				decelerate(1.0f);
+			}
 
-				//if(getShipVelocity().magnitude < 0.1f) {
-				//	moveTowardsTarget();
-				//}
-			} else {
-				state = State.STOP;
+			if(getShipVelocity().magnitude > 0.05f) {
+				slowDown(1.0f);
+			}
+
+			if(distanceToTarget() < 0.05f || getShipVelocity().magnitude < 0.05f) {
+				afterburnerParticle.enableEmission = false;
+
+				state = State.STOP_AFTER;
 			}
 
 			break;
 		}
-		case State.STOP:
+		case State.STOP_AFTER:
 			Debug.Log ("Move stop. Velocity: " + getShipVelocity().magnitude);
 
 			slowDown(1.0f);
 			
 			if(getShipVelocity().magnitude < 0.1f) {
-				rb.velocity = Vector3.zero;
+				stopShip();
 				
 				state = State.END_ROTATE;
 				
 				lineRenderer.SetPosition(0, transform.position);
 				lineRenderer.SetPosition(1, ghost.transform.position);
-				//transform.position = endPosition;
 				startRotation = transform.rotation;
 				endRotation = ghost.transform.rotation;
 				
@@ -248,23 +278,13 @@ public class MoveShipPhysics : MonoBehaviour {
 	}
 
 	public void SetGhost(GameObject newGhost) {
-		Debug.Log ("SetGhost");
+		//Debug.Log ("SetGhost");
 
 		DestroyGhost();
 
 		ghost = newGhost;
-		moveTo = ghost.transform.position;
-		startRotation = transform.rotation;
-		endRotation = Quaternion.LookRotation (ghost.transform.position - transform.position);
-		endRotation *= Quaternion.Euler(-90, 0, 0);
-		startPosition = transform.position;
-		endPosition = ghost.transform.position;
-
-		move = true;
-		time = 0f;
-		period = (Quaternion.Angle(startRotation, endRotation) / 180.0f) * ROTATION_TIME;
-
-		state = State.START_ROTATE;
+		state = State.STOP_BEFORE;
+		afterburnerParticle.enableEmission = false;
 
 		targetPosition = ghost.transform.position;
 	}
