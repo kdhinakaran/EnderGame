@@ -49,13 +49,17 @@ public class WandCollider : MonoBehaviour {
 			}
 			startpos = this.transform.position;
 		} else if (wand.SelectionButtonWasReleased () && currentGhost != null) {
-			
-			//MoveShip ship = (MoveShip)selection.GetComponent("MoveShip");
-			MoveShipPhysics ship = (MoveShipPhysics)selection.GetComponent("MoveShipPhysics");
-			ship.SetGhost(currentGhost);
+			// ship got probably destroyed during drag
+			if(selection == null) {
+				Destroy(currentGhost);
+			} else {
+				//MoveShip ship = (MoveShip)selection.GetComponent("MoveShip");
+				MoveShipPhysics ship = (MoveShipPhysics)selection.GetComponent("MoveShipPhysics");
+				ship.SetGhost(currentGhost);
 
-			currentGhost.transform.parent = null;
-			currentGhost = null;
+				currentGhost.transform.parent = null;
+				currentGhost = null;
+			}
 		}
 	}
 	

@@ -73,7 +73,9 @@ public class FireZone : MonoBehaviour {
 	}
 
 	public void PlaySound() {
-		AudioSource audio = zone.gameObject.GetComponent<AudioSource>();
-		audio.Play();
+		if (zone != null) {
+			AudioSource audio = zone.gameObject.GetComponent<AudioSource> ();
+			audio.Play ();
+		}
 	}
 }
