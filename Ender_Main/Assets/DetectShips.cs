@@ -4,6 +4,7 @@ using System.Collections;
 public class DetectShips : MonoBehaviour {
 
 	private int shipsInside = 0;
+	private GameObject shipInside = null;
 
 	// Use this for initialization
 	void Start () {
@@ -16,12 +17,12 @@ public class DetectShips : MonoBehaviour {
 	}
 
 	public bool ShipsInside() {
-		return shipsInside != 0;
+		return shipInside != null;
 	}
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag.Equals ("EnemyShip"))
-			shipsInside++;
+			shipInside = other.gameObject;
 	}
 
 	void OnTriggerStay(Collider other) {
@@ -31,7 +32,7 @@ public class DetectShips : MonoBehaviour {
 
 	void OnTriggerExit(Collider other) {
 		if (other.gameObject.tag.Equals ("EnemyShip"))
-			shipsInside--;
+			shipInside = null;
 	}
 }
 
