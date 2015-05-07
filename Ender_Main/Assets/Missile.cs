@@ -87,7 +87,7 @@ public class Missile : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag.Equals ("Missile")) {
-			AudioSource.PlayClipAtPoint(explosionSound, transform.position, 0.2f);
+			AudioSource.PlayClipAtPoint(explosionSound, transform.position, 1.0f);
 			Explode ();
 			Destroy (other.gameObject);
 		} else if (!other.gameObject.Equals (origin) && isShip (other.gameObject)) {
